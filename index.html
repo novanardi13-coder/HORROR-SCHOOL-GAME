@@ -2,37 +2,49 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Game Horror Sekolah</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>Horror Sekolah - 2 Player</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div id="story">Cerita awal sebelum mulai...</div>
-  <button id="start-btn">Mulai</button>
 
-  <div id="game">
-    <div id="maze"></div>
-    <div id="p1"></div>
-    <div id="p2"></div>
-    <div id="ghost"></div>
-    <div id="darkness"></div>
-    <div id="jumpscare"></div>
+<div id="game">
 
-    <div class="pad" data-player="1">
-      <button class="btn" data-dir="up">↑</button>
-      <button class="btn" data-dir="down">↓</button>
-      <button class="btn" data-dir="left">←</button>
-      <button class="btn" data-dir="right">→</button>
-    </div>
-
-    <div class="pad" data-player="2">
-      <button class="btn" data-dir="up">↑</button>
-      <button class="btn" data-dir="down">↓</button>
-      <button class="btn" data-dir="left">←</button>
-      <button class="btn" data-dir="right">→</button>
+  <div id="story">
+    <div>
+      <h2>Sekolah Terkunci</h2>
+      <p>
+        Kamu dan temanmu terjebak di sekolah tua pada malam hari.<br>
+        Sesuatu mengintai di lorong gelap...
+      </p>
+      <button onclick="startGame()">Mulai</button>
     </div>
   </div>
 
-  <script src="script.js"></script>
+  <div id="p1" class="player"></div>
+  <div id="p2" class="player"></div>
+  <div id="darkness"></div>
+
+  <!-- Player 2 (ATAS) -->
+  <div id="controls-top">
+    <div class="pad" data-player="2">
+      <div></div><div class="btn" data-dir="up">▲</div><div></div>
+      <div class="btn" data-dir="left">◀</div><div></div><div class="btn" data-dir="right">▶</div>
+      <div></div><div class="btn" data-dir="down">▼</div><div></div>
+    </div>
+  </div>
+
+  <!-- Player 1 (BAWAH) -->
+  <div id="controls-bottom">
+    <div class="pad" data-player="1">
+      <div></div><div class="btn" data-dir="up">▲</div><div></div>
+      <div class="btn" data-dir="left">◀</div><div></div><div class="btn" data-dir="right">▶</div>
+      <div></div><div class="btn" data-dir="down">▼</div><div></div>
+    </div>
+  </div>
+
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
