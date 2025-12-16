@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {Elements const game = document.getElementById('game'); const p1 = { el: document.getElementById('p1'), x: 100, y: window.innerHeight-150 }; const p2 = { el: document.getElementById('p2'), x: 100, y: 150 }; const ghost = { el: document.getElementById('ghost'), x: 300, y: 300 }; const darkness = document.getElementById('darkness'); const jumpscare = document.getElementById('jumpscare');
+document.addEventListener('DOMContentLoaded', () => { const game = document.getElementById('game'); const p1 = { el: document.getElementById('p1'), x: 100, y: window.innerHeight-150 }; const p2 = { el: document.getElementById('p2'), x: 100, y: 150 }; const ghost = { el: document.getElementById('ghost'), x: 300, y: 300 }; const darkness = document.getElementById('darkness'); const jumpscare = document.getElementById('jumpscare');
 
 let life = { p1: 3, p2: 3 }; const lifeP1El = document.getElementById('life-p1'); const lifeP2El = document.getElementById('life-p2');
 
@@ -12,7 +12,7 @@ function createMaze(){ maze.forEach(w=>{ const div=document.createElement('div')
 
 function updatePlayer(p){ p.el.style.left=p.x+'px'; p.el.style.top=p.y+'px'; } function collide(x,y){ return maze.some(w=>x+24>w.x && x<w.x+w.w && y+24>w.y && y<w.y+w.h); }
 
-function startGame(){ document.getElementById('story').remove(); running=true; createMaze(); spawnGhost(); }
+function startGame(){ const story = document.getElementById('story'); if(story) story.remove(); running=true; createMaze(); spawnGhost(); }
 
 const startBtn = document.getElementById('start-btn'); if(startBtn) startBtn.addEventListener('click', startGame);
 
