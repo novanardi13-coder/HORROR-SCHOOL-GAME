@@ -1,31 +1,37 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-  <title>Horror Sekolah - 2 Player</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Horror Sekolah Labirin - 2 Player</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-
 <div id="game">
 
   <div id="story">
     <div>
       <h2>Sekolah Terkunci</h2>
-      <p>
-        Kamu dan temanmu terjebak di sekolah tua pada malam hari.<br>
-        Sesuatu mengintai di lorong gelap...
-      </p>
+      <p>Kamu dan temanmu terjebak di sekolah tua. Hantu mengintai lorong gelap...</p>
       <button onclick="startGame()">Mulai</button>
     </div>
   </div>
 
+  <div id="maze"></div>
+
   <div id="p1" class="player"></div>
   <div id="p2" class="player"></div>
+  <div id="ghost" class="enemy"></div>
   <div id="darkness"></div>
+  <div id="jumpscare"></div>
 
-  <!-- Player 2 (ATAS) -->
+  <!-- Life / Nyawa -->
+  <div id="life-container">
+    <div>Player 1: <span id="life-p1" class="life">❤️❤️❤️</span></div>
+    <div>Player 2: <span id="life-p2" class="life">💙💙💙</span></div>
+  </div>
+
+  <!-- Controls Player 2 (ATAS) -->
   <div id="controls-top">
     <div class="pad" data-player="2">
       <div></div><div class="btn" data-dir="up">▲</div><div></div>
@@ -34,7 +40,7 @@
     </div>
   </div>
 
-  <!-- Player 1 (BAWAH) -->
+  <!-- Controls Player 1 (BAWAH) -->
   <div id="controls-bottom">
     <div class="pad" data-player="1">
       <div></div><div class="btn" data-dir="up">▲</div><div></div>
