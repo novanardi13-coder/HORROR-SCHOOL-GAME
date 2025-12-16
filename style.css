@@ -1,38 +1,12 @@
-* { box-sizing: border-box; }
-body {
-  margin: 0; background: black; font-family: Arial, sans-serif; color: white; overflow: hidden;
-}
-#game { width: 100vw; height: 100vh; position: relative; }
-
-.player { width: 24px; height: 24px; border-radius: 50%; position: absolute; z-index: 2; }
-#p1 { background: #22c55e; box-shadow: 0 0 15px #22c55e; }
-#p2 { background: #3b82f6; box-shadow: 0 0 15px #3b82f6; }
-
-.enemy { width: 30px; height: 30px; background: crimson; border-radius: 50%; box-shadow: 0 0 20px red; position: absolute; z-index: 2; }
-
-#maze .wall { position: absolute; background: #444; }
-
-#darkness { position: absolute; inset: 0; pointer-events: none; z-index: 3; background: rgba(0,0,0,0.95); }
-
-#story { position: absolute; inset: 0; background: rgba(0,0,0,0.95); display: flex; justify-content: center; align-items: center; text-align: center; padding: 20px; z-index: 10; }
-#story button { margin-top: 20px; padding: 10px 20px; font-size: 16px; }
-
-.pad { display: grid; grid-template-columns: repeat(3,60px); grid-template-rows: repeat(3,60px); gap:5px; }
-.btn { background: rgba(255,255,255,0.15); border-radius: 10px; display:flex; align-items:center; justify-content:center; font-size:20px; user-select:none; }
-
-#controls-top { position:absolute; top:10px; left:50%; transform:translateX(-50%); z-index:5; }
-#controls-bottom { position:absolute; bottom:20px; left:50%; transform:translateX(-50%); z-index:5; }
-
-#jumpscare { position:absolute; inset:0; background:red; opacity:0; z-index:20; transition:0.2s; }
-
-#life-container {
-  position: absolute;
-  top: 10px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 10;
-  display: flex;
-  gap: 20px;
-  font-size: 18px;
-}
-.life { color: red; }
+body { margin:0; background:#111; color:#fff; font-family:sans-serif; }
+#game { position:relative; width:100%; height:100vh; overflow:hidden; background:#111; }
+#p1, #p2, #ghost { width:24px; height:24px; position:absolute; }
+#p1 { background:green; }
+#p2 { background:blue; }
+#ghost { background:red; }
+#maze .wall { position:absolute; background:#555; }
+#darkness { position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; }
+#jumpscare { position:absolute; top:50%; left:50%; width:100px; height:100px; background:white; opacity:0; transform:translate(-50%, -50%); transition:opacity 0.1s; }
+.pad { position:absolute; bottom:10px; display:flex; gap:5px; }
+.pad[data-player='2'] { top:10px; bottom:auto; }
+.btn { width:50px; height:50px; font-size:24px; }
