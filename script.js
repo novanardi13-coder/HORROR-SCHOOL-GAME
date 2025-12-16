@@ -16,7 +16,7 @@ function startGame(){ document.getElementById('story').remove(); running=true; c
 
 const startBtn = document.getElementById('start-btn'); if(startBtn) startBtn.addEventListener('click', startGame);
 
-// Controls document.querySelectorAll('.btn').forEach(btn=>{ btn.addEventListener('touchstart',()=>{ if(!running) return; const dir = btn.dataset.dir; const player = btn.closest('.pad').dataset.player==='1'?p1:p2; const speed=10; let nx=player.x, ny=player.y; if(dir==='up') ny-=speed; if(dir==='down') ny+=speed; if(dir==='left') nx-=speed; if(dir==='right') nx+=speed; if(!collide(nx,ny)){ player.x=nx; player.y=ny; updatePlayer(player); } }); });
+document.querySelectorAll('.btn').forEach(btn=>{ btn.addEventListener('touchstart',()=>{ if(!running) return; const dir = btn.dataset.dir; const player = btn.closest('.pad').dataset.player==='1'?p1:p2; const speed=10; let nx=player.x, ny=player.y; if(dir==='up') ny-=speed; if(dir==='down') ny+=speed; if(dir==='left') nx-=speed; if(dir==='right') nx+=speed; if(!collide(nx,ny)){ player.x=nx; player.y=ny; updatePlayer(player); } }); });
 
 function spawnGhost(){ setInterval(()=>{ if(!running) return; const target = Math.random()<0.5?p1:p2; let dx = target.x - ghost.x; let dy = target.y - ghost.y; const dist = Math.hypot(dx,dy); dx/=dist; dy/=dist; let nx=ghost.x+dx2, ny=ghost.y+dy2; if(!collide(nx,ny)){ ghost.x=nx; ghost.y=ny; ghost.el.style.left=ghost.x+'px'; ghost.el.style.top=ghost.y+'px'; } if(dist<40){ jumpscare.style.opacity=1; setTimeout(()=>jumpscare.style.opacity=0,200); if(target===p1) loseLife('p1'); if(target===p2) loseLife('p2'); } },30); }
 
