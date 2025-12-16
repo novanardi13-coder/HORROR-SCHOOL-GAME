@@ -1,6 +1,8 @@
-document.addEventListener('DOMContentLoaded', () => { const game = document.getElementById('game'); const p1 = { el: document.getElementById('p1'), x: 100, y: window.innerHeight-150 }; const p2 = { el: document.getElementById('p2'), x: 100, y: 150 }; const ghost = { el: document.getElementById('ghost'), x: 300, y: 300 }; const darkness = document.getElementById('darkness'); const jumpscare = document.getElementById('jumpscare'); let running = false;
+document.addEventListener('DOMContentLoaded', () => { // Elements const game = document.getElementById('game'); const p1 = { el: document.getElementById('p1'), x: 100, y: window.innerHeight-150 }; const p2 = { el: document.getElementById('p2'), x: 100, y: 150 }; const ghost = { el: document.getElementById('ghost'), x: 300, y: 300 }; const darkness = document.getElementById('darkness'); const jumpscare = document.getElementById('jumpscare');
 
 // Life / Nyawa let life = { p1: 3, p2: 3 }; const lifeP1El = document.getElementById('life-p1'); const lifeP2El = document.getElementById('life-p2');
+
+let running = false;
 
 function loseLife(player){ if(player==='p1'){ life.p1--; lifeP1El.textContent='❤️'.repeat(life.p1); } if(player==='p2'){ life.p2--; lifeP2El.textContent='💙'.repeat(life.p2); } if(life.p1<=0 || life.p2<=0){ alert('GAME OVER!'); location.reload(); } }
 
@@ -12,7 +14,7 @@ function updatePlayer(p){ p.el.style.left=p.x+'px'; p.el.style.top=p.y+'px'; } f
 
 function startGame(){ document.getElementById('story').remove(); running=true; createMaze(); spawnGhost(); }
 
-// Bind tombol mulai const startBtn = document.getElementById('start-btn'); if(startBtn) startBtn.onclick = startGame;
+// Tombol Mulai stabil const startBtn = document.getElementById('start-btn'); if(startBtn) startBtn.addEventListener('click', startGame);
 
 // Controls document.querySelectorAll('.btn').forEach(btn=>{ btn.addEventListener('touchstart',()=>{ if(!running) return; const dir = btn.dataset.dir; const player = btn.closest('.pad').dataset.player==='1'?p1:p2; const speed=10; let nx=player.x, ny=player.y; if(dir==='up') ny-=speed; if(dir==='down') ny+=speed; if(dir==='left') nx-=speed; if(dir==='right') nx+=speed; if(!collide(nx,ny)){ player.x=nx; player.y=ny; updatePlayer(player); } }); });
 
