@@ -12,9 +12,7 @@ function createMaze(){ maze.forEach(w=>{ const div=document.createElement('div')
 
 // Collision check function collide(x,y){ return maze.some(w=>x+24>w.x && x<w.x+w.w && y+24>w.y && y<w.y+w.h); }
 
-// Make startGame global window.startGame = function(){ document.getElementById('story').remove(); running=true; createMaze(); spawnGhost(); };
-
-// Bind start button safely for all devices document.getElementById('start-btn')?.addEventListener('click', window.startGame);
+// Start game function function startGame(){ document.getElementById('story').remove(); running=true; createMaze(); spawnGhost(); }
 
 // Controls document.querySelectorAll('.btn').forEach(btn=>{ btn.addEventListener('touchstart',()=>{ if(!running) return; const dir = btn.dataset.dir; const player = btn.closest('.pad').dataset.player==='1'?p1:p2; const speed=10; let nx=player.x, ny=player.y; if(dir==='up') ny-=speed; if(dir==='down') ny+=speed; if(dir==='left') nx-=speed; if(dir==='right') nx+=speed; if(!collide(nx,ny)){ player.x=nx; player.y=ny; updatePlayer(player); } }); });
 
